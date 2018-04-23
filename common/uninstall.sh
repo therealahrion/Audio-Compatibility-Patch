@@ -27,7 +27,7 @@ if ! $MAGISK; then
           FILE="$UNITY$(echo $OFILE | sed "s|^/vendor|/system/vendor|g")"
           case $FILE in
             *.conf) [ "$(grep "^#$MODID" $FILE)" ] && sed -i "/$FLAG {/,/}/ s/^#$MODID//" $FILE;;
-            *.xml) [ "$(grep "<!--$FLAG" $FILE)" ] && sed -i "/<!--$FLAG {/,/}$MODID-->/ s/<!--$FLAG/$FLAG/g; s/}$MODID-->/}/g" $FILE;;
+            *.xml) [ "$(grep "<!--$FLAG" $FILE)" ] && sed -i "/<!--$FLAG {/,/}$MODID-->/ s/<!--$FLAG {/$FLAG {/g; s/}$MODID-->/}/g" $FILE;;
           esac
         done
       fi

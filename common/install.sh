@@ -90,11 +90,11 @@ if [ -z $PATCH ]; then
     $FUNCTION "DOWN"
   fi
   ui_print " "
-  ui_print "- Select Patch -"
-  ui_print "   Patch policy files or remove deep_buffer?:"
+  ui_print "- Select Patch Method -"
+  ui_print "   Patch flags or remove sections?:"
   ui_print "   Vol Up = Patch (new logic)"
   ui_print "   Vol Down = Remove (old logic)"
-  ui_print "   Only select 'remove' if patch doesn't work for you"
+  ui_print "   Only select Remove if patch doesn't work for you"
   if $FUNCTION; then
     PATCH=true
   else
@@ -155,7 +155,7 @@ else
                     sed -i "/$FLAG {/,/}/ s/^/#$MODID/" $FILE
                   fi;;
           *.xml) if [ ! "$(grep "<!--.*$FLAG" $FILE)" ]; then
-                   sed -i "/$FLAG {/,/}/ s/$FLAG/<!--$FLAG/g; s/}/}$MODID-->/g" $FILE
+                   sed -i "/$FLAG {/,/}/ s/$FLAG {/<!--$FLAG {/g; s/}/}$MODID-->/g" $FILE
                  fi;;
         esac
       done
