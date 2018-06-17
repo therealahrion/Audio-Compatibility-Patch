@@ -1,4 +1,4 @@
-[ $COUNT -gt 1 ] && return
+RUNONCE=true
 PATCH=true
 if $PATCH; then
   for FILE in ${FILES}; do
