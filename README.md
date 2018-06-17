@@ -5,7 +5,7 @@ This fixes music and streaming apps (Spotify, Pandora, etc) that aren't processi
 * Any Android device
 
 ## Change Log
-### v1.4.5 - x.xx.2018
+### v1.4.5 - 6.17.2018
 * Updated for aml v1.7
 
 ### v1.4.4 - 6.15.2018
