@@ -112,12 +112,14 @@ if $PATCH; then
     FILE="$UNITY$(echo $OFILE | sed "s|^/vendor|/system/vendor|g")"
     cp_ch_nb $ORIGDIR$OFILE $FILE 0644 false
     case $FILE in
-      *.xml) sed -ri "/<mixPort name=\"(deep_buffer)|(raw)|(low_latency)\"/,/<\/mixPort> *$/ {/flags=\"[^\"]*/p; s|( *)(.*flags=\"[^\"]*.*)|\1<!--\2$MODID-->|; s|-->$MODID-->|$MODID-->|}" $FILE
+      *.xml) sed -ri "/<mixPort name=\"(deep_buffer)|(raw)|(low_latency)|(primary-out)\"/,/<\/mixPort> *$/ {/flags=\"[^\"]*/p; s|( *)(.*flags=\"[^\"]*.*)|\1<!--\2$MODID-->|; s|-->$MODID-->|$MODID-->|}" $FILE
              sed -ri "/<mixPort name=\"(deep_buffer)|(low_latency)\"/,/<\/mixPort> *$/ {/<!--/! {s|flags=\"[^\"]*|flags=\"AUDIO_OUTPUT_FLAG_NONE|}}" $FILE
-             sed -i "/<mixPort name=\"raw\"/,/<\/mixPort> *$/ {/<!--/! {s|flags=\"[^\"]*|flags=\"AUDIO_OUTPUT_FLAG_FAST|}}" $FILE;;
-      *.conf) sed -ri "/^ *(deep_buffer)|(raw)|(low_latency) \{/,/}/ {/flags .*$/p; s|( *flags .*$)|#$MODID\1|}" $FILE
+             sed -i "/<mixPort name=\"raw\"/,/<\/mixPort> *$/ {/<!--/! {s|flags=\"[^\"]*|flags=\"AUDIO_OUTPUT_FLAG_FAST|}}" $FILE
+             sed -i "/<mixPort name=\"primary-out\"/,/<\/mixPort> *$/ {/<!--/! {s/|AUDIO_OUTPUT_FLAG_DEEP_BUFFER//; s/AUDIO_OUTPUT_FLAG_DEEP_BUFFER|//}}" $FILE;;
+      *.conf) sed -ri "/^ *(deep_buffer)|(raw)|(low_latency)|(primary) \{/,/}/ {/flags .*$/p; s|( *flags .*$)|#$MODID\1|}" $FILE
               sed -ri "/^ *(deep_buffer)|(low_latency) \{/,/}/ {/^ *flags .*$/ s|flags .*|flags AUDIO_OUTPUT_FLAG_NONE|}" $FILE
-              sed -i "/^ *raw {/,/}/ {/^ *flags .*$/ s|flags .*|flags AUDIO_OUTPUT_FLAG_FAST|}" $FILE;;
+              sed -i "/^ *raw {/,/}/ {/^ *flags .*$/ s|flags .*|flags AUDIO_OUTPUT_FLAG_FAST|}" $FILE
+              sed -i "/^ *primary {/,/}/ {/^ *flags .*$/ s/|AUDIO_OUTPUT_FLAG_DEEP_BUFFER//; s/AUDIO_OUTPUT_FLAG_DEEP_BUFFER|//}" $FILE;;
     esac
   done
 else
