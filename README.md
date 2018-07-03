@@ -7,6 +7,7 @@ This fixes music and streaming apps (Spotify, Pandora, etc) that aren't processi
 ## Change Log
 ### v1.4.6 - 6.xx.2018
 * Added patch support for samsungs with deep_buffer contained in primary-out/primary output
+* Fixed patching with busybox sed
 
 ### v1.4.5 - 6.17.2018
 * Updated for aml v1.7
