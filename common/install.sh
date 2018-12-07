@@ -22,11 +22,13 @@ done
 
 # Get Rem/Pat from zipname
 if $PATCH; then
+  OIFS=$IFS; IFS=\|
   case $(basename $ZIP) in
     *rem*|*Rem*|*REM*) PATCH=false;;
     *nrem*|*Nrem*|*NREM*) PATCH=true;;
     *) PATCH="";;
   esac
+  IFS=$OIFS
 else
   ui_print " "
   ui_print "! No flags detected in policy files!"
