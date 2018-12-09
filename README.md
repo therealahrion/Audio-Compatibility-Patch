@@ -6,7 +6,7 @@ This fixes music and streaming apps (Spotify, Pandora, etc) that aren't processi
 
 ## Change Log
 ### v1.5.2 - 12.9.2018
-* Unity v1.8.1 update
+* Unity v1.8.2 update
 * Fixed limitation in zipname triggers - you can use spaces in the zipname now and trigger is case insensitive
 
 ### v1.5.1 - 10.23.2018
