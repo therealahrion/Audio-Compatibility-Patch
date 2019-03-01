@@ -1,4 +1,4 @@
-# This is the old repo for ACP. It's now being maintained by JohnFawkes here: https://github.com/JohnFawkes/Audio-Compatibility-Patch
+# This is the old repo for ACP. [It's now being maintained by JohnFawkes here](https://github.com/JohnFawkes/Audio-Compatibility-Patch)
 
 # Audio Compatibility Patch
 This fixes music and streaming apps (Spotify, Pandora, etc) that aren't processing audio effects for various equalizer applications through the modification of audio policy. [More details in support thread](https://forum.xda-developers.com/apps/magisk/module-universal-deepbuffer-remover-t3577067).
